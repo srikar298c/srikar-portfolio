@@ -182,9 +182,7 @@ function Card({
         }}
         className="relative w-full h-full flex flex-col items-center justify-center"
       >
-        <h3 className="text-zinc-800 font-bold font-mono mb-2 text-4xl">
-          {title}
-        </h3>
+        <h3 className="text-zinc-800 font-bold  mb-2 text-4xl">{title}</h3>
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
@@ -194,7 +192,7 @@ function Card({
         exit={{ opacity: 0 }}
         className="absolute inset-0 rounded-xl text-zinc-800 flex flex-col p-6  justify-between"
       >
-        <div className="flex gap-2 items-start text-2xl font-bold">
+        <div className="flex gap-2 items-center text-2xl font-bold">
           {icon}
           <h2>{title}</h2>
         </div>

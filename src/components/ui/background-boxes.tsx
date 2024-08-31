@@ -1,39 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
-
-  const [rows, setRows] = useState<number[]>([]);
-  const [cols, setCols] = useState<number[]>([]);
-
-  // Function to calculate rows and columns based on screen size
-  const calculateGrid = () => {
-    const rowHeight = 20; // Adjust the row height as needed
-    const colWidth = 20; // Adjust the column width as needed
-
-    // Calculate number of rows and columns based on screen size
-    const numRows = Math.floor(window.innerHeight / rowHeight);
-    const numCols = Math.floor(window.innerWidth / colWidth);
-
-    console.log(numRows, numCols);
-
-    // Fill arrays with 1 based on calculated rows and columns
-    setRows(new Array(numRows).fill(1));
-    setCols(new Array(numCols).fill(1));
-  };
-
-  // useEffect to run the calculation on component mount and on resize
-  useEffect(() => {
-    calculateGrid(); // Initial calculation
-
-    window.addEventListener("resize", calculateGrid); // Recalculate on resize
-
-    // Cleanup function to remove event listener
-    return () => window.removeEventListener("resize", calculateGrid);
-  }, []);
-
+  const rows = new Array(143).fill(1);
+  const cols = new Array(162).fill(1);
   let colors = [
     "--sky-300",
     "--pink-300",

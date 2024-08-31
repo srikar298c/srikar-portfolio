@@ -1,10 +1,10 @@
 import CardReveal from "@/components/cards";
-import CoolButton from "@/components/ui/cool-button";
+import Home from "@/components/home";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="w-screen h-screen grid place-content-center ">
-      <CardReveal />
+    <main>
+      <Home />
     </main>
   );
 }

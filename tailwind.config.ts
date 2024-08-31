@@ -59,7 +59,10 @@ const config: Config = {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
-  		}
+  		},
+		boxShadow: {
+			high: 'var(--shadow-elevation-high)',
+		}
   	}
   },
   plugins: [require("tailwindcss-animate")],

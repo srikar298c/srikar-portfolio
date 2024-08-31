@@ -2,6 +2,8 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, PanInfo, motionValue } from "framer-motion";
 import { X } from "lucide-react";
+import { details } from "@/lib/portfolio-details";
+import Image from "next/image";
 import CoolButton from "./ui/cool-button";
 
 export default function CardReveal({
@@ -13,14 +15,6 @@ export default function CardReveal({
 }) {
   const [selected, setSelected] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const cards = [
-    { id: 1, title: "Ace", content: "♠️", details: "Ace of Spades" },
-    { id: 2, title: "King", content: "♥️", details: "King of Hearts" },
-    { id: 3, title: "Queen", content: "♣️", details: "Queen of Clubs" },
-    { id: 4, title: "Jack", content: "♦️", details: "Jack of Diamonds" },
-    { id: 5, title: "10", content: "🃏", details: "10 of Jokers" },
-  ];
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -63,16 +57,19 @@ export default function CardReveal({
             <X size={24} />
           </button>
           <div className="relative w-full h-full flex justify-center items-center">
-            {cards.map((card, index) => (
+            {details.map((card, index) => (
               <Card
-                key={card.id}
+                key={card.title}
                 index={index}
                 title={card.title}
                 content={card.content}
-                details={card.details}
+                details={card.content}
                 isSelected={selected === index}
                 setIsSelected={(index) => setSelected(index)}
-                totalCards={cards.length}
+                totalCards={details.length}
+                icon={card.icon}
+                image={card.videoUrl}
+                website={card.website}
               />
             ))}
           </div>
@@ -90,9 +87,15 @@ interface CardProps {
   setIsSelected: (index: number | null) => void;
   totalCards: number;
   details: string;
+  icon: React.ReactNode;
+  image: string;
+  website: string;
 }
 
 function Card({
+  website,
+  icon,
+  image,
   index,
   title,
   content,
@@ -179,8 +182,9 @@ function Card({
         }}
         className="relative w-full h-full flex flex-col items-center justify-center"
       >
-        <h3 className="text-zinc-800 font-semibold mb-2 text-4xl">{title}</h3>
-        <p className="text-4xl text-zinc-800">{content}</p>
+        <h3 className="text-zinc-800 font-bold font-mono mb-2 text-4xl">
+          {title}
+        </h3>
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
@@ -188,9 +192,26 @@ function Card({
           opacity: isSelected ? 1 : 0,
         }}
         exit={{ opacity: 0 }}
-        className="absolute inset-0 rounded-xl text-zinc-800 flex items-center justify-center"
+        className="absolute inset-0 rounded-xl text-zinc-800 flex flex-col p-6  justify-between"
       >
-        {details}
+        <div className="flex gap-2 items-start text-2xl font-bold">
+          {icon}
+          <h2>{title}</h2>
+        </div>
+        <div className="flex flex-col gap-2">
+          <video
+            src={image}
+            className="rounded-lg w-full h-72 object-cover"
+            autoPlay={true}
+            loop={true}
+            controls
+          />
+
+          <p className="text-lg text-zinc-800">{content}</p>
+        </div>
+        <CoolButton className="flex justify-center" href={website}>
+          visit
+        </CoolButton>
       </motion.div>
     </motion.div>
   );

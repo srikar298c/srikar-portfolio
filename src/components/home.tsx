@@ -1,45 +1,48 @@
 "use client";
 
 import React from "react";
-import {
-  GooeyMenu,
-  GooeyMenuAfter,
-  GooeyMenuBefore,
-  GooeyMenuTrigger,
-} from "@/components/ui/gooey.menu";
-import { FaQuestion, FaPlus } from "react-icons/fa";
-import { FaGear } from "react-icons/fa6";
+
+import { FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaNoteSticky } from "react-icons/fa6";
 import { IoFolderSharp } from "react-icons/io5";
 import CardReveal from "./cards";
+import { FloatingDock } from "./ui/floating-deck";
 
 export default function Home() {
   const [reveal, setReveal] = React.useState(false);
   return (
-    <main
-      className="w-screen relative
-   h-screen grid items-end justify-center "
-    >
+    <section className="w-screen relative h-screen grid items-end justify-center p-14">
       <CardReveal setReveal={setReveal} reveal={reveal} />
-      <GooeyMenu className="w-[50px] h-[350px]">
-        <GooeyMenuBefore>
-          <button
-          className="w-full h-full items-center justify-center flex"
-          onClick={() => setReveal(true)}>
-            <IoFolderSharp />
-          </button>
-          <FaQuestion />
-        </GooeyMenuBefore>
-        <GooeyMenuAfter>
-          <FaGear />
-          <FaQuestion />
-        </GooeyMenuAfter>
-        <GooeyMenuTrigger
-          className="peer-checked:rotate-45 peer-checked:bg-red-500 peer-checked:text-white"
-          id="sharedemo"
-        >
-          <FaPlus />
-        </GooeyMenuTrigger>
-      </GooeyMenu>
-    </main>
+      <FloatingDock
+        items={[
+          {
+            title: "Projects",
+            icon: <IoFolderSharp />,
+            href: "#",
+            onClick: () => setReveal(true),
+          },
+          {
+            title: "Articles",
+            icon: <FaNoteSticky />,
+            href: "https://notes.whizzy.pro",
+          },
+          {
+            title: "Twitter",
+            icon: <FaTwitter />,
+            href: "https://x.com/swarajbachu",
+          },
+          {
+            title: "LinkedIn",
+            icon: <FaLinkedin />,
+            href: "https://linkedin.com/in/swarajbachu",
+          },
+          {
+            title: "Github",
+            icon: <FaGithub />,
+            href: "https://github.com/swarajbachu",
+          },
+        ]}
+      />
+    </section>
   );
 }

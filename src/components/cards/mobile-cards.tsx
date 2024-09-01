@@ -32,6 +32,9 @@ function CardSwipe({ children, onSendToBack }: CardRotateProps) {
     <motion.div
       className="absolute h-[70%] w-[90%] cursor-grab"
       style={{ x, y, rotateY }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       drag
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
       dragElastic={0.6}
@@ -83,7 +86,7 @@ export default function MobileCard({
             <motion.div
               className="h-full w-full rounded-lg bg-zinc-100 flex flex-col justify-between p-4 text-zinc-800 shadow-high"
               animate={{
-                scale: 1+index * 0.06 - cards.length * 0.04,
+                scale: 1 + index * 0.06 - cards.length * 0.04,
                 y: index * 25,
                 // transformOrigin: "90% 90%",
               }}

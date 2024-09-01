@@ -3,28 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --shadow-color: 0deg 0% 59%;
+  --shadow-color: 0deg 0% 0%;
   --shadow-elevation-low:
-    -0.2px 0.2px 0.2px hsl(var(--shadow-color) / 0.73),
-    -0.2px 0.2px 0.2px -2.4px hsl(var(--shadow-color) / 0.5),
-    -0.7px 0.7px 0.8px -4.7px hsl(var(--shadow-color) / 0.27);
+    -0.1px -0.5px 0.5px hsl(var(--shadow-color) / 0.34),
+    -0.1px -0.8px 0.8px -1.6px hsl(var(--shadow-color) / 0.29),
+    -0.3px -1.9px 1.9px -3.2px hsl(var(--shadow-color) / 0.24);
   --shadow-elevation-medium:
-    -0.2px 0.2px 0.2px hsl(var(--shadow-color) / 0.61),
-    -0.2px 0.2px 0.2px -1.2px hsl(var(--shadow-color) / 0.5),
-    -0.6px 0.6px 0.7px -2.4px hsl(var(--shadow-color) / 0.38),
-    -1.6px 1.5px 1.7px -3.6px hsl(var(--shadow-color) / 0.26),
-    -3.6px 3.4px 3.9px -4.7px hsl(var(--shadow-color) / 0.15);
+    -0.1px -0.5px 0.5px hsl(var(--shadow-color) / 0.29),
+    -0.2px -1.1px 1.1px -0.8px hsl(var(--shadow-color) / 0.26),
+    -0.4px -2.2px 2.3px -1.6px hsl(var(--shadow-color) / 0.23),
+    -0.8px -4.7px 4.8px -2.4px hsl(var(--shadow-color) / 0.21),
+    -1.7px -9.3px 9.6px -3.2px hsl(var(--shadow-color) / 0.18);
   --shadow-elevation-high:
-    -0.2px 0.2px 0.2px hsl(var(--shadow-color) / 0.57),
-    -0.3px 0.2px 0.3px -0.5px hsl(var(--shadow-color) / 0.51),
-    -0.5px 0.5px 0.6px -1.1px hsl(var(--shadow-color) / 0.46),
-    -1px 1px 1.1px -1.6px hsl(var(--shadow-color) / 0.41),
-    -2px 1.9px 2.2px -2.1px hsl(var(--shadow-color) / 0.35),
-    -3.5px 3.3px 3.8px -2.6px hsl(var(--shadow-color) / 0.3),
-    -5.9px 5.5px 6.4px -3.2px hsl(var(--shadow-color) / 0.24),
-    -9.1px 8.6px 9.9px -3.7px hsl(var(--shadow-color) / 0.19),
-    -13.3px 12.6px 14.4px -4.2px hsl(var(--shadow-color) / 0.14),
-    -18.8px 17.8px 20.4px -4.7px hsl(var(--shadow-color) / 0.08);
+    -0.1px -0.5px 0.5px hsl(var(--shadow-color) / 0.27),
+    -0.3px -1.6px 1.6px -0.4px hsl(var(--shadow-color) / 0.25),
+    -0.5px -2.8px 2.9px -0.7px hsl(var(--shadow-color) / 0.24),
+    -0.8px -4.3px 4.4px -1.1px hsl(var(--shadow-color) / 0.23),
+    -1.2px -6.6px 6.8px -1.4px hsl(var(--shadow-color) / 0.22),
+    -1.8px -10px 10.3px -1.8px hsl(var(--shadow-color) / 0.2),
+    -2.6px -14.7px 15.1px -2.2px hsl(var(--shadow-color) / 0.19),
+    -3.8px -21.2px 21.8px -2.5px hsl(var(--shadow-color) / 0.18),
+    -5.3px -29.7px 30.5px -2.9px hsl(var(--shadow-color) / 0.17),
+    -7.2px -40.6px 41.7px -3.2px hsl(var(--shadow-color) / 0.16);
+
 }
 
 @media (prefers-color-scheme: dark) {

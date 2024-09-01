@@ -5,9 +5,10 @@ import React, { useEffect, useState } from "react";
 import { FaTwitter } from "react-icons/fa";
 import { FaGithub, FaLinkedin, FaNoteSticky } from "react-icons/fa6";
 import { IoFolderSharp } from "react-icons/io5";
-import CardReveal from "./cards";
+import CardReveal from "./cards/cards";
 import { FloatingDock } from "./ui/floating-deck";
 import { BoxesCore } from "./ui/background-boxes";
+import HomeServer from "./home-server";
 
 export default function Home() {
   const [reveal, setReveal] = React.useState(false);
@@ -15,20 +16,12 @@ export default function Home() {
   return (
     <section className="w-screen relative h-screen p-14 flex flex-col justify-between overflow-hidden">
       <span />
-      <div className="absolute z-10 w-full h-full pointer-events-none inset-0  flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black_95%)]" />
-      <div
-        className="absolute  h-[200vh] w-[200vw]  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center font-borney -skew-x-[48deg]   skew-y-[15deg]"
-        // style={{ width: dimensions.width, height: dimensions.height }}
-      >
-        <h1 className="lg:text-[10rem] text-[4.1rem]  tracking-wide font-bold shadow-sm z-10">
-          Swaraj Bachu
-        </h1>
-        <p className="text-[2rem] text-gray-500 z-10">Software Engineer</p>
-        <BoxesCore className="z-0" />
-      </div>
+      <div className="absolute z-10 w-full h-full pointer-events-none inset-0  flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_50%,black_90%)] md:[mask-image:radial-gradient(ellipse_at_center,transparent_30%,black_95%)]" />
+      <HomeServer />
       <CardReveal setReveal={setReveal} reveal={reveal} />
       <FloatingDock
         desktopClassName="z-50 self-end"
+        mobileClassName="z-[9999] fixed bottom-4 left-4"
         items={[
           {
             title: "Projects",

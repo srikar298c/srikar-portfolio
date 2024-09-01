@@ -43,16 +43,7 @@ export default function DesktopCards({
       exit={{ opacity: 0 }}
       onClick={() => setSelected(null)}
     >
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          setReveal(false);
-        }}
-        className="absolute z-50 p-3 text-gray-200 bg-gray-800 rounded-full cursor-pointer pointer-events-auto bg-opacity-70 backdrop-filter backdrop-blur-lg top-4 right-4"
-        aria-label="Close"
-      >
-        <X size={24} />
-      </button>
+
       <div className="relative w-full h-full flex justify-center items-center">
         {details.map((card, index) => (
           <Card

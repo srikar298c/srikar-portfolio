@@ -1,4 +1,3 @@
-import CardReveal from "@/components/cards";
 import Home from "@/components/home";
 
 export default function HomePage() {

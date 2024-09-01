@@ -2,6 +2,7 @@ import { details } from "@/lib/portfolio-details";
 import { useMotionValue, useTransform, PanInfo, motion } from "framer-motion";
 import { useState } from "react";
 import CoolButton from "../ui/cool-button";
+import { X } from "lucide-react";
 
 interface CardRotateProps {
   children: React.ReactNode;
@@ -12,7 +13,7 @@ function CardSwipe({ children, onSendToBack }: CardRotateProps) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useTransform(y, [-100, 100], [60, -60]);
-  const rotateY = useTransform(x, [-200, 200], [-20, 20]);
+  const rotateY = useTransform(x, [-250, 250], [-20, 20]);
 
   function handleDragEnd(_: any, info: PanInfo) {
     const threshold = 180;
@@ -29,8 +30,8 @@ function CardSwipe({ children, onSendToBack }: CardRotateProps) {
 
   return (
     <motion.div
-      className="absolute h-[80%] w-[90%] cursor-grab"
-      style={{ x, y,rotateY }}
+      className="absolute h-[70%] w-[90%] cursor-grab"
+      style={{ x, y, rotateY }}
       drag
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
       dragElastic={0.6}
@@ -66,14 +67,24 @@ export default function MobileCard({
       className="inset-0 absolute h-screen w-screen flex items-start justify-center z-50"
       style={{ perspective: 600 }}
     >
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          setReveal(false);
+        }}
+        className="absolute z-50 p-3 text-gray-200 bg-zinc-800 rounded-full cursor-pointer pointer-events-auto bg-opacity-70 backdrop-filter backdrop-blur-lg bottom-4 left-1/2 -translate-x-1/2"
+        aria-label="Close"
+      >
+        <X size={24} />
+      </button>
       {cards.map((card, index) => {
         return (
           <CardSwipe key={card.title} onSendToBack={() => swipeCards(index)}>
             <motion.div
               className="h-full w-full rounded-lg bg-zinc-100 flex flex-col justify-between p-4 text-zinc-800 shadow-high"
               animate={{
-                scale: 1 + index * 0.06 - cards.length * 0.06,
-                y: index * 30,
+                scale: 1+index * 0.06 - cards.length * 0.04,
+                y: index * 25,
                 // transformOrigin: "90% 90%",
               }}
               initial={false}

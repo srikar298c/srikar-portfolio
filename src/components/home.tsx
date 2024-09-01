@@ -14,7 +14,7 @@ export default function Home() {
   const [reveal, setReveal] = React.useState(false);
 
   return (
-    <section className="w-screen relative h-screen p-14 flex flex-col justify-between overflow-hidden">
+    <section className="w-dvw relative h-dvh p-14 flex flex-col justify-between overflow-hidden">
       <span />
       <div className="absolute z-10 w-full h-full pointer-events-none inset-0  flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_50%,black_90%)] md:[mask-image:radial-gradient(ellipse_at_center,transparent_30%,black_95%)]" />
       <HomeServer />

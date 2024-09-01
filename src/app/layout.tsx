@@ -3,11 +3,13 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Whizzy",
   description: "Personal website of Swaraj Bachu",
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 const myFont = localFont({ src: "./BorneyDemo.otf", variable: "--borney" });

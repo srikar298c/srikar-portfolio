@@ -16,7 +16,7 @@ function CardSwipe({ children, onSendToBack }: CardRotateProps) {
   const rotateY = useTransform(x, [-250, 250], [-20, 20]);
 
   function handleDragEnd(_: any, info: PanInfo) {
-    const threshold = 180;
+    const threshold = 100;
     if (
       Math.abs(info.offset.x) > threshold ||
       Math.abs(info.offset.y) > threshold
@@ -75,7 +75,7 @@ export default function MobileCard({
           e.stopPropagation();
           setReveal(false);
         }}
-        className="absolute z-50 p-3 text-gray-200 bg-zinc-800 rounded-full cursor-pointer pointer-events-auto bg-opacity-70 backdrop-filter backdrop-blur-lg bottom-4 left-1/2 -translate-x-1/2"
+        className="absolute z-[999] p-3 text-gray-200 bg-zinc-800 rounded-full cursor-pointer pointer-events-auto bg-opacity-70 backdrop-filter backdrop-blur-lg bottom-5 left-1/2 -translate-x-1/2"
         aria-label="Close"
       >
         <X size={24} />

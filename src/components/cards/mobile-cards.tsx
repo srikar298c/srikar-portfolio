@@ -67,9 +67,12 @@ export default function MobileCard({
 
   return (
     <div
-      className="inset-0 absolute h-screen w-screen flex items-start justify-center z-50"
+      className="inset-0 absolute h-screen w-screen flex items-start justify-center z-[100] "
       style={{ perspective: 600 }}
     >
+      <div
+      className="absolute h-screen w-screen inset-0 bg-black bg-opacity-50"
+      />
       <button
         onClick={(e) => {
           e.stopPropagation();

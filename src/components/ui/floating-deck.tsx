@@ -17,6 +17,7 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import useDeviceType from "@/lib/use-device-type";
 
 interface Item {
   title: string;
@@ -37,66 +38,66 @@ export const FloatingDock = ({
   return (
     <>
       <FloatingDockDesktop items={items} className={desktopClassName} />
-      <FloatingDockMobile items={items} className={mobileClassName} />
+      {/* <FloatingDockMobile items={items} className={mobileClassName} /> */}
     </>
   );
 };
 
-const FloatingDockMobile = ({
-  items,
-  className,
-}: {
-  items: Item[];
-  className?: string;
-}) => {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className={cn("relative block md:hidden", className)}>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            layoutId="nav"
-            className="absolute bottom-full mb-2 inset-x-0 flex flex-col gap-2"
-          >
-            {items.map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  y: 10,
-                  transition: {
-                    delay: idx * 0.05,
-                  },
-                }}
-                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-              >
-                <Link
-                  onClick={item.onClick}
-                  href={item.href}
-                  key={item.title}
-                  className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-900 flex items-center justify-center"
-                >
-                  <div className="h-4 w-4">{item.icon}</div>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <button
-        onClick={() => setOpen(!open)}
-        className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-800 flex items-center justify-center"
-      >
-        <TbNavigationFilled className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
-      </button>
-    </div>
-  );
-};
+// const FloatingDockMobile = ({
+//   items,
+//   className,
+// }: {
+//   items: Item[];
+//   className?: string;
+// }) => {
+//   const [open, setOpen] = useState(false);
+//   return (
+//     <div className={cn("relative block md:hidden", className)}>
+//       <AnimatePresence>
+//         {open && (
+//           <motion.div
+//             layoutId="nav"
+//             className="absolute bottom-full mb-2 inset-x-0 flex flex-col gap-2"
+//           >
+//             {items.map((item, idx) => (
+//               <motion.div
+//                 key={item.title}
+//                 initial={{ opacity: 0, y: 10 }}
+//                 animate={{
+//                   opacity: 1,
+//                   y: 0,
+//                 }}
+//                 exit={{
+//                   opacity: 0,
+//                   y: 10,
+//                   transition: {
+//                     delay: idx * 0.05,
+//                   },
+//                 }}
+//                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
+//               >
+//                 <Link
+//                   onClick={item.onClick}
+//                   href={item.href}
+//                   key={item.title}
+//                   className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-900 flex items-center justify-center"
+//                 >
+//                   <div className="h-4 w-4">{item.icon}</div>
+//                 </Link>
+//               </motion.div>
+//             ))}
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+//       <button
+//         onClick={() => setOpen(!open)}
+//         className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-800 flex items-center justify-center"
+//       >
+//         <TbNavigationFilled className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
+//       </button>
+//     </div>
+//   );
+// };
 
 const FloatingDockDesktop = ({
   items,
@@ -111,7 +112,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden md:flex h-16 gap-4 items-end  rounded-2xl bg-gray-50 dark:bg-neutral-900 px-4 pb-3",
+        "mx-auto  flex h-16 gap-4 items-end  rounded-2xl bg-gray-50 dark:bg-neutral-900 px-4 pb-3",
         className
       )}
     >
@@ -176,13 +177,14 @@ function IconContainer({
   });
 
   const [hovered, setHovered] = useState(false);
+  const device = useDeviceType();
 
   return (
     <Link href={href} onClick={onClick}>
       <motion.div
         ref={ref}
         style={{ width, height }}
-        onMouseEnter={() => setHovered(true)}
+        onMouseEnter={() => setHovered(device === "desktop")}
         onMouseLeave={() => setHovered(false)}
         className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800 flex items-center justify-center relative"
       >

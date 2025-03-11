@@ -5,8 +5,8 @@ import localFont from "next/font/local";
 
 
 export const metadata: Metadata = {
-  title: "Whizzy",
-  description: "Personal website of Swaraj Bachu",
+  title: "srikar",
+  description: "Personal website of srikar kudurmalla",
   twitter: {
     card: "summary_large_image",
   },

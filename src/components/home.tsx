@@ -23,31 +23,26 @@ export default function Home() {
         desktopClassName="z-50 self-end"
         mobileClassName="z-[9999] fixed bottom-4 left-4"
         items={[
-          {
-            title: "Projects",
-            icon: <IoFolderSharp />,
-            href: "#",
-            onClick: () => setReveal(true),
-          },
-          {
-            title: "Articles",
-            icon: <FaNoteSticky />,
-            href: "https://notes.whizzy.pro",
-          },
+          // {
+          //   title: "Projects",
+          //   icon: <IoFolderSharp />,
+          //   href: "#",
+          //   onClick: () => setReveal(true),
+          // },
           {
             title: "Twitter",
             icon: <FaTwitter />,
-            href: "https://x.com/swarajbachu",
+            href: "https://x.com/mesrikar29859",
           },
           {
             title: "LinkedIn",
             icon: <FaLinkedin />,
-            href: "https://linkedin.com/in/swarajbachu",
+            href: "https://www.linkedin.com/in/k-srikar298c/",
           },
           {
             title: "Github",
             icon: <FaGithub />,
-            href: "https://github.com/swarajbachu",
+            href: "https://github.com/srikar298c",
           },
         ]}
       />
